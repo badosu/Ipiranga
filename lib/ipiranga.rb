@@ -1,0 +1,1 @@
+require 'ipiranga/clients'
