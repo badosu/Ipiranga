@@ -1,6 +1,8 @@
+require './lib/ipiranga/version.rb'
+
 Gem::Specification.new do |s|
   s.name        = 'ipiranga'
-  s.version     = '0.0.0'
+  s.version     = Ipiranga.version
   s.date        = '2013-08-23'
   s.summary     = "Ipiranga Web Services Client"
   s.description = "A simple Ipiranga Web Services Client"
