@@ -17,6 +17,11 @@ task :install => :build do
   system "gem install pkg/#{gemspec.name}-#{gemspec.version}.gem"
 end
 
+desc "Publish gem"
+task :publish => :build do
+  system "gem push pkg/#{gemspec.name}-#{gemspec.version}.gem"
+end
+
 desc "Launches interactive console with borel"
 task :console => :install do
   system "pry -r #{gemspec.name}"
