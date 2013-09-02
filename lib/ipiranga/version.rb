@@ -4,7 +4,7 @@ module Ipiranga
   # Minor version number
   MINOR = 0
   # Tiny version number
-  TINY = 2
+  TINY = 3
 
   # Joins the version numbers
   VERSION = [MAJOR, MINOR, TINY].join('.')
