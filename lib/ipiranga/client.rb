@@ -6,13 +6,14 @@ require 'akami'
 
 module Ipiranga
   class Client
-    attr_reader :wsdl, :soap, :wsdl_url
-    attr_accessor :username, :password
+    attr_reader :soap, :wsdl_url
+    attr_accessor :wsdl, :username, :password
 
     def initialize(opts = {})
-      @wsdl_url = URI(opts.fetch(:wsdl, wsdl_url))
+      @wsdl_url = URI(opts.fetch(:wsdl_url, wsdl_url))
       @username = opts[:username]
       @password = opts[:password]
+      @wsdl = opts[:wsdl]
 
       operations.each do |operation|
         define_singleton_method(operation) do |&block|
@@ -33,10 +34,16 @@ module Ipiranga
       soap.wsdl.operations.keys
     end
 
+    def operation(key)
+      soap.wsdl.operations[key]
+    end
+
     def post(operation)
       request = soap.request(operation)
 
-      yield request.body if block_given?
+      pRequest = request.body.pRequest
+
+      yield pRequest if block_given?
 
       append_wsse(request) if has_credentials?
 
@@ -45,7 +52,7 @@ module Ipiranga
       http.use_ssl = true
       http_response = http.post(uri.path.gsub(".cls", ".CLS"), request.content, request.headers)
 
-      soap.response(request, http_response.body).body_hash
+      soap.response(request, http_response.body)
     end
 
     def has_credentials?
