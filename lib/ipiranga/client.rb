@@ -52,7 +52,7 @@ module Ipiranga
       http.use_ssl = true
       http_response = http.post(uri.path.gsub(".cls", ".CLS"), request.content, request.headers)
 
-      soap.response(request, http_response.body).body_hash
+      soap.response(request, http_response.body)
     end
 
     def has_credentials?
