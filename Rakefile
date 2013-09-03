@@ -1,5 +1,12 @@
-task_file_pattern = File.expand_path("../tasks/**/*.rb", __FILE__)
-Dir[task_file_pattern].each do |task_file|
-  require File.expand_path(task_file)
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
+
+RSpec::Core::RakeTask.new
+
+desc "Launches interactive console with borel"
+task console: :install do
+  system "pry -ripiranga"
 end
 
+task default: :spec
+task test: :spec
