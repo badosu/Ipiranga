@@ -48,11 +48,11 @@ Ipiranga uses WSSE for security, so you need to specify your credentials:
       b.CPF 36918756885
       b.CodigoPedido 1
       b.Produto do |p|
-        ProdutoKM = p.ProdutoKM
-        ProdutoKM.IdItem 1
-        ProdutoKM.CodigoProduto "1"
-        ProdutoKM.Quantidade 1
-        ProdutoKM.KM 100
-        ProdutoKM.TipoAcumulo "2"
+        produtoKM = p.ProdutoKM
+        produtoKM.IdItem 1
+        produtoKM.CodigoProduto "1"
+        produtoKM.Quantidade 1
+        produtoKM.KM 100
+        produtoKM.TipoAcumulo "2"
       end
     end
