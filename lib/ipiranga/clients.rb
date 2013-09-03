@@ -11,7 +11,7 @@ module Ipiranga
     end
 
     def cadastrar(&block)
-      result = post_cadastrar(&block)["cadastrarResult"]
+      result = post_cadastrar(&block).body_hash["cadastrarResult"]
 
       Ipiranga.raise_exception(result) if result["status"].nil? || result["status"] == "false"
 
