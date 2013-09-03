@@ -9,6 +9,18 @@ module Ipiranga
         "https://b2bdv.ipiranga.com.br/csp/ensb2cws/cbpi.bs.participantePF.Service.CLS?WSDL=1"
       end
     end
+
+    def cadastrar(&block)
+      result = post_cadastrar(&block)["cadastrarResult"]
+
+      Ipiranga.raise_exception(result) if result["status"].nil? || result["status"] == "false"
+
+      if result["status"] == "true" && result["statusMimetica"] == "2"
+        raise UserAlreadyExists.new(result)
+      end
+
+      return result["statusMimetica"] == "0"
+    end
   end
 
   class KM < Client

@@ -16,7 +16,7 @@ module Ipiranga
       @wsdl = opts[:wsdl]
 
       operations.each do |operation|
-        define_singleton_method(operation) do |&block|
+        define_singleton_method("post_#{operation}") do |&block|
           post(operation, &block)
         end
       end
