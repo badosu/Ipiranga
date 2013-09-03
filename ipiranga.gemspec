@@ -15,5 +15,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<lolsoap>, ["~> 0.4.0"])
   s.add_runtime_dependency(%q<akami>, ["~> 1.2.0"])
 
+  s.add_development_dependency(%q<pry-meta>, ["~> 0.0.5"])
+
   s.license     = 'MIT'
 end
