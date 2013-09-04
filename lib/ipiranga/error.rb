@@ -24,15 +24,4 @@ module Ipiranga
   class UserAlreadyExists < ::Exception; end
   class InvalidCredentials < ::Exception; end
   class InternalError < ::Exception; end
-
-  def self.raise_exception(result)
-    case result["msgErro"]
-    when "Usuario/Password Inválido"
-      raise InvalidCredentials.new(result)
-    when "Erro interno"
-      raise InternalError.new(result)
-    else
-      raise ::Exception.new(result)
-    end
-  end
 end
