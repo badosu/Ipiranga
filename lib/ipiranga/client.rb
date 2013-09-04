@@ -22,7 +22,7 @@ module Ipiranga
 
         define_singleton_method(operation) do |&block|
           post(operation, &block).body_hash
-        end unless defined?(operation)
+        end unless respond_to?(operation)
       end
     end
 
