@@ -31,5 +31,15 @@ module Ipiranga
         "https://b2bdv.ipiranga.com.br/csp/ensb2cws/cbpi.bs.km.pedido.Service.CLS?WSDL=1"
       end
     end
+
+    def gerarPedidoAcumulo(&block)
+      result = post_gerarPedidoAcumulo(&block).
+                 body_hash["gerarPedidoAcumuloResult"]
+
+      raise RequestAlreadyExists.new(result) if result["codigoRetorno"] == "2"
+      raise ::Exception.new(result) if result["codigoRetorno"] != "0"
+
+      return result["codigoRequisicao"].to_i
+    end
   end
 end

@@ -20,6 +20,7 @@ module Ipiranga
     end
   end
 
+  class RequestAlreadyExists < ::Exception; end
   class UserAlreadyExists < ::Exception; end
   class InvalidCredentials < ::Exception; end
   class InternalError < ::Exception; end
