@@ -19,6 +19,10 @@ module Ipiranga
         define_singleton_method("post_#{operation}") do |&block|
           post(operation, &block)
         end
+
+        define_singleton_method(operation) do |&block|
+          post(operation, &block).body_hash
+        end unless defined?(operation)
       end
     end
 
