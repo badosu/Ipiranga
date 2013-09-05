@@ -1,4 +1,4 @@
 require 'ipiranga/error'
-require 'ipiranga/clients/km'
-require 'ipiranga/clients/pf'
+require 'ipiranga/client/km'
+require 'ipiranga/client/pf'
 require 'ipiranga/version'
