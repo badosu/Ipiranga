@@ -24,7 +24,7 @@ module Ipiranga
 
     private
 
-    def self.raise_exception(result)
+    def raise_exception(result)
       case result["msgErro"]
       when "Usuario/Password Inválido"
         raise InvalidCredentials.new(result)
