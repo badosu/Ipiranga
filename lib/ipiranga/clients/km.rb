@@ -3,7 +3,7 @@ require 'ipiranga/client'
 module Ipiranga
   class KM < Client
     def wsdl_url
-      if defined?(RAILS_ENV) && RAILS_ENV == "production"
+      if defined?(ENV["RAILS_ENV"]) && ENV["RAILS_ENV"] == "production"
         "https://b2b.ipiranga.com.br/csp/ensb2cws/cbpi.bs.km.pedido.Service.CLS?WSDL=1"
       else
         "https://b2bdv.ipiranga.com.br/csp/ensb2cws/cbpi.bs.km.pedido.Service.CLS?WSDL=1"
