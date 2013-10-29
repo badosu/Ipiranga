@@ -27,7 +27,7 @@ module Ipiranga
     end
 
     def wsdl
-      @wsdl ||= open(@wsdl_url.to_s).read.gsub("http://eaidev:2010", "https://#{@wsdl_url.host}")
+      @wsdl ||= open(@wsdl_url.to_s).read.gsub(/http:\/\/eai(dev|prd):2010/, "https://#{@wsdl_url.host}")
     end
 
     def soap
